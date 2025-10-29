@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nour Nawaiseh CV</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+<div class="cv-container">
+<div class="sidebar">
+<p>contact</p>
+<p>experience</p>
+<p>education</p>
+<p>skills</p>
+</div>
+
+<div class="main">
+<div class="top-section">
+<div class="photo-container" id="photo-container">
+<img id="profile-photo" src="https://via.placeholder.com/100" alt="Profile Photo">
+<input type="file" id="photo-upload" accept="image/*">
+</div>
+
+<div class="info">
+<h2>Nour Nawaiseh</h2>
+<p><strong>JORDANIAN</strong></p>
+<p>AMMAN, JOR</p>
+<p><a href="mailto:nournawaiseh@gmail.com">nournawaiseh@gmail.com</a></p>
+<p>+962797900914</p>
+</div>
+</div>
+
+<div class="content">
+<section>
+<h3>Skills:</h3>
+<p>Problem solving, teamwork and leadership<br>
+Time management, customer service</p>
+</section>
+
+<section>
+<h3>Experience:</h3>
+<p>Sales assistant at mobile shop | Project manager at Zain<br>
+Coding in OP company</p>
+</section>
+<section>
+<h3>Education:</h3>
+<p>Bachelor, Al-Ahliyya Amman University<br>
+    Current student in Computer Science</p>
+</section>
+</div>
+</div>
+</div>
+
+<script>
+const photoContainer = document.getElementById('photo-container');
+const photoUpload = document.getElementById('photo-upload');
+const profilePhoto = document.getElementById('profile-photo');
+
+
+photoContainer.addEventListener('click', () => photoUpload.click());
+
+
+photoContainer.addEventListener('dragover', e => {
+e.preventDefault();
+photoContainer.classList.add('dragging');
+});
+photoContainer.addEventListener('dragleave', () => {
+    photoContainer.classList.remove('dragging');
+});
+
+photoContainer.addEventListener('drop', e => {
+e.preventDefault();
+photoContainer.classList.remove('dragging');
+const file = e.dataTransfer.files[0];
+if (file && file.type.startsWith('image/')) {
+const reader = new FileReader();
+reader.onload = e => profilePhoto.src = e.target.result;
+reader.readAsDataURL(file);
+}
+});
+
+
+photoUpload.addEventListener('change', e => {
+const file = e.target.files[0];
+if (file && file.type.startsWith('image/')) {
+const reader = new FileReader();
+reader.onload = e => profilePhoto.src = e.target.result;
+reader.readAsDataURL(file);
+}
+});
+
+</script>
+</body>
+</html>
