@@ -19,7 +19,7 @@ jobs:
     - name: Test Docker image
       run: |
         docker run --name test-container -d -p 3003:3003 my-flask-app
-        sleep 10
+        sleep 15
         curl -f http://localhost:3003/ || exit 1
         docker stop test-container
         docker rm test-container
